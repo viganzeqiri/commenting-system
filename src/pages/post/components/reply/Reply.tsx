@@ -1,6 +1,5 @@
 import { Button, Flex, Text } from "@chakra-ui/react";
 import { useState } from "react";
-import { Controls } from "../controls/Controls";
 import { Form } from "../form/Form";
 import { Upvotes } from "../upvotes/Upvotes";
 
@@ -43,8 +42,6 @@ export const Reply = () => {
       </Flex>
 
       {showReply && <Form useReplyLables />}
-
-      {/* <Controls useReplyLables /> */}
     </Flex>
   );
 };

@@ -6,11 +6,9 @@ export function App() {
   return (
     <Box>
       <Header />
-
       <Box as="section" minH="90vh" maxWidth="1200px" m="0 auto">
         <Post />
       </Box>
-
       <Footer />
     </Box>
   );

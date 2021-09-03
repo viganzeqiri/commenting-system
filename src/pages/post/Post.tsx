@@ -15,6 +15,7 @@ export const Post = () => {
         onSecondIconClick={() => {
           formRef.current.scrollIntoView({
             behavior: "smooth",
+            block: "center",
           });
 
           formRef.current.focus();
