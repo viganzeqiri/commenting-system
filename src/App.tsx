@@ -2,18 +2,16 @@ import { Box } from "@chakra-ui/react";
 import { Header, Footer } from "components";
 import { Post } from "pages/post/Post";
 
-import "./App.css";
-
 export function App() {
   return (
-    <div className="app">
+    <Box>
       <Header />
 
-      <Box as="section" minH="80vh">
+      <Box as="section" minH="80vh" maxWidth="1200px" m="0 auto">
         <Post />
       </Box>
 
       <Footer />
-    </div>
+    </Box>
   );
 }
