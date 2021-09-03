@@ -3,7 +3,12 @@ import { Controls } from "../controls/Controls";
 
 export const Comment = () => {
   return (
-    <Box borderBottom="1px solid" borderColor="brand.second" p="40px 0">
+    <Box
+      borderBottom="1px solid"
+      borderLeft="1px solid"
+      borderColor="brand.first"
+      p="40px 20px"
+    >
       <Flex alignItems="center">
         <Avatar name="Vigan Zeqiri">
           <AvatarBadge boxSize="1.25em" bg="green.500" />

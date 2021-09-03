@@ -6,12 +6,11 @@ export const Comments = () => {
     <Box
       border="1px solid"
       borderColor="brand.second"
+      borderRadius="7px"
       p="20px 20px 40px"
       m="40px 0"
     >
       <Text mb="20px">Comments</Text>
-      <Comment />
-      <Comment />
       <Comment />
     </Box>
   );
