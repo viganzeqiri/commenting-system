@@ -3,3 +3,4 @@ export * from "./controls/Controls";
 export * from "./details/Details";
 export * from "./comments/Comments";
 export * from "./comment/Comment";
+export * from "./form/Form";

@@ -1,13 +1,17 @@
+import { useState } from "react";
 import { Box } from "@chakra-ui/react";
-import { Details, Content, Controls, Comments } from "./components";
+import { Content, Controls, Comments, Details, Form } from "./components";
 
 export const Post = () => {
+  const [showComments] = useState(true);
+
   return (
     <Box p="20px 0">
       <Details />
       <Content />
       <Controls />
-      <Comments />
+      {showComments && <Comments />}
+      <Form />
     </Box>
   );
 };

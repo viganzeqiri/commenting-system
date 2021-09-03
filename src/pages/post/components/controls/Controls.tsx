@@ -1,26 +1,24 @@
-import { Box, Button, Flex, Text, Textarea } from "@chakra-ui/react";
-import { ChatIcon } from "@chakra-ui/icons";
+import { Flex, Text } from "@chakra-ui/react";
+import { AddIcon, ChatIcon } from "@chakra-ui/icons";
 
-export const Controls = () => {
+interface ControlsProps {
+  useReplyLables?: boolean;
+}
+
+export const Controls: React.FC<ControlsProps> = ({
+  useReplyLables = false,
+}) => {
   return (
-    <Box>
-      <Flex as="button" alignItems="center" pt="20px">
+    <Flex alignItems="center" pt="20px">
+      <Flex as="button" alignItems="center" mr="40px">
         <ChatIcon mr="10px" />
-        <Text>3 Comments</Text>
+        <Text>3 {useReplyLables ? "Replies" : "Comments"}</Text>
       </Flex>
 
-      <Box as="form" textAlign="right" pt="20px">
-        <Textarea placeholder="Add a comment" />
-
-        <Button
-          mt="10px"
-          borderColor="brand.first"
-          color="brand.first"
-          variant="outline"
-        >
-          Comment
-        </Button>
-      </Box>
-    </Box>
+      <Flex as="button" alignItems="center">
+        <AddIcon mr="10px" />
+        <Text>Add a {useReplyLables ? "reply" : "comment"}</Text>
+      </Flex>
+    </Flex>
   );
 };
