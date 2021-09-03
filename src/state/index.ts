@@ -17,11 +17,3 @@ export type AppDispatch = typeof store.dispatch;
 
 export const useAppDispatch = () => useDispatch<AppDispatch>();
 export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
-export interface CommentProps {
-  id: string;
-  content: string;
-  author: string;
-  createTime: Date;
-  upvotes: number;
-  repliesIds: string[];
-}

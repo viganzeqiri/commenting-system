@@ -1,5 +1,5 @@
-import { CommentProps } from "state";
-import { CommentsActions } from "./actions";
+import { CommentProps } from "pages/post/components";
+import { CommentReplyActionTypes, ADD_COMMENT, VOTE, REPLY } from "state/types";
 
 interface State {
   byId: Record<string, CommentProps>;
@@ -13,10 +13,10 @@ export const initialState = {
 
 const commentsReducer = (
   state: State = initialState,
-  action: CommentsActions
+  action: CommentReplyActionTypes
 ) => {
   switch (action.type) {
-    case "add_comment": {
+    case ADD_COMMENT: {
       const newComment = action.payload;
 
       return {
@@ -28,24 +28,10 @@ const commentsReducer = (
         allIds: state.allIds.concat(newComment.id),
       };
     }
-    case "vote": {
-      const { id, type } = action.payload;
-      const comment = state.byId[id];
 
-      return {
-        ...state,
-        byId: {
-          ...state.byId,
-          [id]: {
-            ...comment,
-            upvotes: comment.upvotes + (type === "upvote" ? 1 : -1),
-          },
-        },
-      };
-    }
-    case "reply": {
-      const { parentId, reply } = action.payload;
-      const parentComment = state.byId[parentId];
+    case VOTE: {
+      const { commentId, type } = action.payload;
+      const parentComment = state.byId[commentId];
 
       if (!parentComment)
         return {
@@ -56,13 +42,35 @@ const commentsReducer = (
         ...state,
         byId: {
           ...state.byId,
-          [parentId]: {
+          [commentId]: {
+            ...parentComment,
+            votes: parentComment.votes + (type === "upvote" ? 1 : -1),
+          },
+        },
+      };
+    }
+
+    case REPLY: {
+      const { commentId, reply } = action.payload;
+      const parentComment = state.byId[commentId];
+
+      if (!parentComment)
+        return {
+          ...state,
+        };
+
+      return {
+        ...state,
+        byId: {
+          ...state.byId,
+          [commentId]: {
             ...parentComment,
             repliesIds: parentComment.repliesIds.concat(reply.id),
           },
         },
       };
     }
+
     default: {
       return state;
     }

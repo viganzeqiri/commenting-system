@@ -5,7 +5,7 @@ export const Details = () => {
     <Box>
       <Flex alignItems="center">
         <Avatar name="Vigan Zeqiri">
-          <AvatarBadge boxSize="1.25em" bg="green.500" />
+          <AvatarBadge boxSize="1em" bg="green.500" />
         </Avatar>
         <Flex alignItems="center" ml="20px">
           <Text mr="5px">Posted by Vigan Zeqiri</Text>

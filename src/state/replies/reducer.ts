@@ -1,5 +1,5 @@
-import { CommentProps } from "state";
-import { RepliesActions } from "./actions";
+import { CommentProps } from "pages/post/components";
+import { CommentReplyActionTypes, REPLY, VOTE } from "state/types";
 
 interface State {
   byId: Record<string, CommentProps>;
@@ -13,15 +13,14 @@ export const initialState = {
 
 const repliesReducer = (
   state: State = initialState,
-  action: RepliesActions
+  action: CommentReplyActionTypes
 ) => {
   switch (action.type) {
-    case "reply": {
-      const { parentId, reply } = action.payload;
+    case REPLY: {
+      const { commentId, reply } = action.payload;
+      const parentReply = state.byId[commentId];
 
-      const parent = state.byId[parentId];
-
-      if (!parent) {
+      if (!parentReply) {
         return {
           ...state,
           byId: {
@@ -36,15 +35,38 @@ const repliesReducer = (
         ...state,
         byId: {
           ...state.byId,
-          [parentId]: {
-            ...parent,
-            repliesIds: parent.repliesIds.concat(reply.id),
+          [commentId]: {
+            ...parentReply,
+            repliesIds: parentReply.repliesIds.concat(reply.id),
           },
           [reply.id]: reply,
         },
         allIds: state.allIds.concat(reply.id),
       };
     }
+
+    case VOTE: {
+      const { commentId, type } = action.payload;
+      const parentReply = state.byId[commentId];
+
+      if (!parentReply) {
+        return {
+          ...state,
+        };
+      }
+
+      return {
+        ...state,
+        byId: {
+          ...state.byId,
+          [commentId]: {
+            ...parentReply,
+            votes: parentReply.votes + (type === "upvote" ? 1 : -1),
+          },
+        },
+      };
+    }
+
     default: {
       return state;
     }

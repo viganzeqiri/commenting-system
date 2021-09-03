@@ -4,5 +4,4 @@ export * from "./details/Details";
 export * from "./comments/Comments";
 export * from "./comment/Comment";
 export * from "./form/Form";
-export * from "./reply/Reply";
-export * from "./upvotes/Upvotes";
+export * from "./votes/Votes";
