@@ -31,7 +31,12 @@ export const Controls: React.FC<ControlsProps> = ({
       </Flex>
 
       {!hideAddButton && (
-        <Flex as="button" alignItems="center" onClick={onSecondIconClick}>
+        <Flex
+          as="button"
+          alignItems="center"
+          onClick={onSecondIconClick}
+          data-testid="add-reply"
+        >
           <AddIcon mr="10px" />
           <Text>Add a {useReplyLables ? "reply" : "comment"}</Text>
         </Flex>

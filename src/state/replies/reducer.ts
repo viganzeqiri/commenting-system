@@ -1,7 +1,7 @@
 import { CommentProps } from "pages/post/components";
 import { CommentReplyActionTypes, REPLY, VOTE } from "state/types";
 
-interface State {
+export interface State {
   byId: Record<string, CommentProps>;
   allIds: string[];
 }

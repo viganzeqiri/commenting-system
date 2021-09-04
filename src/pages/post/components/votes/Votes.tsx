@@ -23,13 +23,17 @@ export const Votes: React.FC<VotesProps> = ({ votes, onChange }) => {
             size="sm"
             icon={<ArrowUpIcon />}
             onClick={() => onChange?.("upvote")}
+            data-testid="upvote"
           />
-          <Text m="0 8px">{votes}</Text>
+          <Text m="0 8px" data-testid="result">
+            {votes}
+          </Text>
           <IconButton
             {...buttonProps}
             size="sm"
             icon={<ArrowDownIcon />}
             onClick={() => onChange?.("downvote")}
+            data-testid="downvote"
           />
         </Flex>
       </Flex>

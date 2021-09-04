@@ -1,4 +1,5 @@
 import { FormEvent, KeyboardEvent, useCallback, useRef, useState } from "react";
+import { formatDistanceToNowStrict } from "date-fns";
 import { Avatar, AvatarBadge, Box, Flex, Text } from "@chakra-ui/react";
 import { useAppDispatch, useAppSelector } from "state";
 import { repliesSelectors } from "state/selectors";
@@ -71,15 +72,16 @@ export const Comment: React.FC<CommentProps> = ({
       borderColor="brand.first"
       p="20px 0 20px 20px"
       mt="20px"
+      data-testid="comment"
     >
       <Flex alignItems="center">
-        <Avatar name={author} size="sm">
+        <Avatar name={author} size="sm" bg="darkorange" color="whiteAlpha.900">
           <AvatarBadge boxSize="1em" bg="green.500" />
         </Avatar>
         <Flex alignItems="center" ml="20px">
           <Text mr="5px">Posted by {author}</Text>
           <Text fontSize="14px" opacity="0.6">
-            {createTime.getDay()}
+            {formatDistanceToNowStrict(createTime)}
           </Text>
         </Flex>
       </Flex>

@@ -31,11 +31,12 @@ export const Form = forwardRef<Ref, FormProps>((props, ref) => {
   };
 
   return (
-    <form onSubmit={onSubmit}>
+    <form onSubmit={onSubmit} data-testid="form">
       <Box textAlign="right" pt="20px">
         <Textarea
           ref={ref}
           bg="brand.third"
+          data-testid="textarea"
           placeholder={useReplyLables ? "Add a reply" : "Add a comment"}
           value={comment.content}
           onKeyPress={(event) => {
@@ -51,6 +52,7 @@ export const Form = forwardRef<Ref, FormProps>((props, ref) => {
               ...prevState,
               id: uuid.v4(),
               content: event.target.value,
+              createTime: new Date(),
             }))
           }
         />
@@ -66,7 +68,7 @@ export const Form = forwardRef<Ref, FormProps>((props, ref) => {
             size: "sm",
           })}
         >
-          Comment
+          {useReplyLables ? "Reply" : "Comment"}
         </Button>
       </Box>
     </form>

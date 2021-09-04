@@ -2,7 +2,7 @@ import { Box } from "@chakra-ui/react";
 import { Header, Footer } from "components";
 import { Post } from "pages/post/Post";
 
-export function App() {
+export const App = () => {
   return (
     <Box>
       <Header />
@@ -12,4 +12,4 @@ export function App() {
       <Footer />
     </Box>
   );
-}
+};

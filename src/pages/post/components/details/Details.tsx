@@ -4,7 +4,7 @@ export const Details = () => {
   return (
     <Box>
       <Flex alignItems="center">
-        <Avatar name="Vigan Zeqiri">
+        <Avatar name="Vigan Zeqiri" bg="darkorange" color="whiteAlpha.900">
           <AvatarBadge boxSize="1em" bg="green.500" />
         </Avatar>
         <Flex alignItems="center" ml="20px">
